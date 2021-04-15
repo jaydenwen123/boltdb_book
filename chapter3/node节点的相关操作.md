@@ -4,7 +4,7 @@
 
 > node represents an in-memory, deserialized page
 
-一个node节点，既可能是叶子节点，也可能是根节点，也可能是分支节点。在
+一个node节点，既可能是叶子节点，也可能是根节点，也可能是分支节点。是物理磁盘上读取进来的页page的内存表现形式。
 
 #### 3.3.1 node节点的定义
 
@@ -242,6 +242,13 @@ func (n *node) prevSibling() *node {
 	// 然后返回
 	return n.parent.childAt(index - 1)
 }
+
+// childIndex returns the index of a given child node.
+func (n *node) childIndex(child *node) int {
+	index := sort.Search(len(n.inodes), func(i int) bool { return bytes.Compare(n.inodes[i].key, child.key) != -1 })
+	return index
+}
+
 
 // childAt returns the child node at a given index.
 // 只有树枝节点才有孩子
@@ -574,7 +581,7 @@ func (n *node) rebalance() {
 		delete(n.bucket.nodes, target.pgid)
 		target.free()
 	} else {
-		// node合到targett
+		// node合到target
 		// Reparent all child nodes being moved.
 		for _, inode := range n.inodes {
 			if child, ok := n.bucket.nodes[inode.pgid]; ok {

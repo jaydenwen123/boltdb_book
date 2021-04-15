@@ -1,11 +1,14 @@
 # 第二节 Bucket遍历之Cursor
 
+本节我们先做一节内容的铺垫，暂时不讲如何创建、获取、删除一个Bucket。而是介绍一个boltdb中的新对象Cursor。
+
+答案是：所有的上述操作都是建立在首先定位到一个Bucket所属的位置，然后才能对其进行操作。而定位一个Bucket的功能就是由Cursor来完成的。所以我们先这一节给大家介绍一下boltdb中的Cursor。
 
 我们先看下官方文档对Cursor的描述
 
 > Cursor represents an iterator that can traverse over all key/value pairs in a bucket in sorted order.
 
-用大白话讲，既然一个Bucket逻辑上是一颗b+树，那就意味着我们可以对其进行遍历。前面提到的set、get操作，无非是要在Bucket上先找到合适的位置，然后再进行操作。而找这个行为就是交由Cursor来完成的。简而言之对Bucket这颗b+树的遍历工作由Cursor来执行。一个Bucket对象关联一个Cursor。下面我们先看看Bucket和Cursor之间的关系。
+用大白话讲，既然一个Bucket逻辑上是一颗b+树，那就意味着我们可以对其进行遍历。前面提到的set、get操作，无非是要在Bucket上先找到合适的位置，然后再进行操作。而“找”这个操作就是交由Cursor来完成的。简而言之对Bucket这颗b+树的遍历工作由Cursor来执行。一个Bucket对象关联一个Cursor。下面我们先看看Bucket和Cursor之间的关系。
 
 ```go
 // Cursor creates a cursor associated with the bucket.

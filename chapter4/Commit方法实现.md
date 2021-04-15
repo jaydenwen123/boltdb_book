@@ -53,6 +53,7 @@ func (tx *Tx) Commit() error {
 	// 分配新的页面给freelist，然后将freelist写入新的页面
 	tx.db.freelist.free(tx.meta.txid, tx.db.page(tx.meta.freelist))
 	// 空闲列表可能会增加，因此需要重新分配页用来存储空闲列表
+	// 因为在开启写事务的时候，有去释放之前读事务占用的页信息，因此此处需要判断是否freelist会有溢出的问题
 	p, err := tx.allocate((tx.db.freelist.size() / tx.db.pageSize) + 1)
 	if err != nil {
 		tx.rollback()

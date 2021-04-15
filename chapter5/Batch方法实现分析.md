@@ -89,11 +89,12 @@ retry:
 	for len(b.calls) > 0 {
 		var failIdx = -1
 		err := b.db.Update(func(tx *Tx) error {
-			遍历calls中的函数c
+			遍历calls中的函数c，多次调用，最后一次提交刷盘
 			for i, c := range b.calls {
 				// safelyCall里面捕获了panic
 				if err := safelyCall(c.fn, tx); err != nil {
 					failIdx = i
+					//只要又失败，事务就不提交
 					return err
 				}
 			}
@@ -105,6 +106,7 @@ retry:
 			// safe to shorten b.calls here because db.batch no longer
 			// points to us, and we hold the mutex anyway.
 			c := b.calls[failIdx]
+			//这儿只是把失败的事务给踢出去了，然后其他的事务会重新执行
 			b.calls[failIdx], b.calls = b.calls[len(b.calls)-1], b.calls[:len(b.calls)-1]
 			// tell the submitter re-run it solo, continue with the rest of the batch
 			c.err <- trySolo
