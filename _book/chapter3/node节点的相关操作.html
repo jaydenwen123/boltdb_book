@@ -1,0 +1,1360 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>第三节 node节点的相关操作 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Bucket的相关操作.html" />
+    
+    
+    <link rel="prev" href="Bucket遍历之Cursor.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../chapter1/boltdb简要介绍.html">
+            
+                <a href="../chapter1/boltdb简要介绍.html">
+            
+                    
+                    第一章 boltdb简要介绍
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../chapter1/boltdb是什么.html">
+            
+                <a href="../chapter1/boltdb是什么.html">
+            
+                    
+                    第一节 boltdb是什么
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../chapter1/为什么要分析boltdb.html">
+            
+                <a href="../chapter1/为什么要分析boltdb.html">
+            
+                    
+                    第二节 为什么要分析boltdb
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../chapter1/boltdb的简单用法.html">
+            
+                <a href="../chapter1/boltdb的简单用法.html">
+            
+                    
+                    第三节 boltdb的简单用法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../chapter1/boltdb的整体数据组织结构.html">
+            
+                <a href="../chapter1/boltdb的整体数据组织结构.html">
+            
+                    
+                    第四节 boltdb的整体数据组织结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../chapter1/boltdb的黑科技.html">
+            
+                <a href="../chapter1/boltdb的黑科技.html">
+            
+                    
+                    第五节 boltdb的黑科技
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../chapter1/总结.html">
+            
+                <a href="../chapter1/总结.html">
+            
+                    
+                    第六节 总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../chapter2/boltdb的核心数据结构分析.html">
+            
+                <a href="../chapter2/boltdb的核心数据结构分析.html">
+            
+                    
+                    第二章 boltdb的核心数据结构分析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../chapter2/boltdb的物理页page结构.html">
+            
+                <a href="../chapter2/boltdb的物理页page结构.html">
+            
+                    
+                    第一节 boltdb的物理页page结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../chapter2/元数据页.html">
+            
+                <a href="../chapter2/元数据页.html">
+            
+                    
+                    第二节 元数据页
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../chapter2/空闲列表页.html">
+            
+                <a href="../chapter2/空闲列表页.html">
+            
+                    
+                    第三节 空闲列表页
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../chapter2/分支节点页.html">
+            
+                <a href="../chapter2/分支节点页.html">
+            
+                    
+                    第四节 分支节点页
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../chapter2/叶子节点页.html">
+            
+                <a href="../chapter2/叶子节点页.html">
+            
+                    
+                    第五节 叶子节点页
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../chapter2/总结.html">
+            
+                <a href="../chapter2/总结.html">
+            
+                    
+                    第六节 总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="boltdb的b+树之Bucket和node.html">
+            
+                <a href="boltdb的b+树之Bucket和node.html">
+            
+                    
+                    第三章 boltdb的b+树之Bucket和node
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="boltdb的Bucket结构.html">
+            
+                <a href="boltdb的Bucket结构.html">
+            
+                    
+                    第一节 boltdb的Bucket结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="Bucket遍历之Cursor.html">
+            
+                <a href="Bucket遍历之Cursor.html">
+            
+                    
+                    第二节 Bucket遍历之Cursor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.3" data-path="node节点的相关操作.html">
+            
+                <a href="node节点的相关操作.html">
+            
+                    
+                    第三节 node节点的相关操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="Bucket的相关操作.html">
+            
+                <a href="Bucket的相关操作.html">
+            
+                    
+                    第四节 Bucket的相关操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="keyvalue的插入和获取和删除.html">
+            
+                <a href="keyvalue的插入和获取和删除.html">
+            
+                    
+                    第五节 keyvalue的插入和获取和删除
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="Bucket的页分裂和页合并.html">
+            
+                <a href="Bucket的页分裂和页合并.html">
+            
+                    
+                    第六节 Bucket的页分裂和页合并
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="总结.html">
+            
+                <a href="总结.html">
+            
+                    
+                    第七节 总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../chapter4/boltdb事务控制.html">
+            
+                <a href="../chapter4/boltdb事务控制.html">
+            
+                    
+                    第四章 boltdb事务控制
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../chapter4/boltdb事务简介.html">
+            
+                <a href="../chapter4/boltdb事务简介.html">
+            
+                    
+                    第一节 boltdb事务简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../chapter4/boltdb事务Tx定义.html">
+            
+                <a href="../chapter4/boltdb事务Tx定义.html">
+            
+                    
+                    第二节 boltdb事务Tx定义
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../chapter4/Begin方法实现.html">
+            
+                <a href="../chapter4/Begin方法实现.html">
+            
+                    
+                    第三节 Begin()实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../chapter4/Commit方法实现.html">
+            
+                <a href="../chapter4/Commit方法实现.html">
+            
+                    
+                    第四节 Commit()实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../chapter4/Rollback方法实现.html">
+            
+                <a href="../chapter4/Rollback方法实现.html">
+            
+                    
+                    第五节 Rollback()实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../chapter4/WriteTo方法和CopyFile方法实现.html">
+            
+                <a href="../chapter4/WriteTo方法和CopyFile方法实现.html">
+            
+                    
+                    第六节 WriteTo()和CopyFile()实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../chapter4/总结.html">
+            
+                <a href="../chapter4/总结.html">
+            
+                    
+                    第七节 总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../chapter5/boltdb的DB对象分析.html">
+            
+                <a href="../chapter5/boltdb的DB对象分析.html">
+            
+                    
+                    第五章 boltdb的DB对象分析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../chapter5/DB结构.html">
+            
+                <a href="../chapter5/DB结构.html">
+            
+                    
+                    第一节 DB结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../chapter5/对外接口.html">
+            
+                <a href="../chapter5/对外接口.html">
+            
+                    
+                    第二节 对外接口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../chapter5/Open方法实现分析.html">
+            
+                <a href="../chapter5/Open方法实现分析.html">
+            
+                    
+                    第三节 Open()实现分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../chapter5/View方法实现分析.html">
+            
+                <a href="../chapter5/View方法实现分析.html">
+            
+                    
+                    第四节 db.View()实现分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../chapter5/Update方法实现分析.html">
+            
+                <a href="../chapter5/Update方法实现分析.html">
+            
+                    
+                    第五节 db.Update()实现分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../chapter5/Batch方法实现分析.html">
+            
+                <a href="../chapter5/Batch方法实现分析.html">
+            
+                    
+                    第六节 db.Batch()实现分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../chapter5/allocate方法和grow方法分析.html">
+            
+                <a href="../chapter5/allocate方法和grow方法分析.html">
+            
+                    
+                    第七节 db.allocate()和db.grow()分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../chapter5/总结.html">
+            
+                <a href="../chapter5/总结.html">
+            
+                    
+                    第八节 总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../chapter6/参考资料.html">
+            
+                <a href="../chapter6/参考资料.html">
+            
+                    
+                    第六章 参考资料
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../END.html">
+            
+                <a href="../END.html">
+            
+                    
+                    结束
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >第三节 node节点的相关操作</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x7B2C;&#x4E09;&#x8282;-node&#x8282;&#x70B9;&#x7684;&#x76F8;&#x5173;&#x64CD;&#x4F5C;">&#x7B2C;&#x4E09;&#x8282; node&#x8282;&#x70B9;&#x7684;&#x76F8;&#x5173;&#x64CD;&#x4F5C;</h1>
+<p>&#x5728;&#x5F00;&#x59CB;&#x5206;&#x6790;node&#x8282;&#x70B9;&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x770B;&#x4E00;&#x4E0B;&#x5B98;&#x65B9;&#x5BF9;node&#x8282;&#x70B9;&#x7684;&#x63CF;&#x8FF0;</p>
+<blockquote>
+<p>node represents an in-memory, deserialized page</p>
+</blockquote>
+<p>&#x4E00;&#x4E2A;node&#x8282;&#x70B9;&#xFF0C;&#x65E2;&#x53EF;&#x80FD;&#x662F;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#xFF0C;&#x4E5F;&#x53EF;&#x80FD;&#x662F;&#x6839;&#x8282;&#x70B9;&#xFF0C;&#x4E5F;&#x53EF;&#x80FD;&#x662F;&#x5206;&#x652F;&#x8282;&#x70B9;&#x3002;&#x662F;&#x7269;&#x7406;&#x78C1;&#x76D8;&#x4E0A;&#x8BFB;&#x53D6;&#x8FDB;&#x6765;&#x7684;&#x9875;page&#x7684;&#x5185;&#x5B58;&#x8868;&#x73B0;&#x5F62;&#x5F0F;&#x3002;</p>
+<h4 id="331-node&#x8282;&#x70B9;&#x7684;&#x5B9A;&#x4E49;">3.3.1 node&#x8282;&#x70B9;&#x7684;&#x5B9A;&#x4E49;</h4>
+<pre><code class="lang-go"><span class="hljs-comment">// node represents an in-memory, deserialized page.</span>
+<span class="hljs-keyword">type</span> node <span class="hljs-keyword">struct</span> {
+    bucket     *Bucket <span class="hljs-comment">// &#x5173;&#x8054;&#x4E00;&#x4E2A;&#x6876;</span>
+    isLeaf     <span class="hljs-keyword">bool</span>
+    unbalanced <span class="hljs-keyword">bool</span>   <span class="hljs-comment">// &#x503C;&#x4E3A;true&#x7684;&#x8BDD;&#xFF0C;&#x9700;&#x8981;&#x8003;&#x8651;&#x9875;&#x5408;&#x5E76;</span>
+    spilled    <span class="hljs-keyword">bool</span>   <span class="hljs-comment">// &#x503C;&#x4E3A;true&#x7684;&#x8BDD;&#xFF0C;&#x9700;&#x8981;&#x8003;&#x8651;&#x9875;&#x5206;&#x88C2;</span>
+    key        []<span class="hljs-keyword">byte</span> <span class="hljs-comment">// &#x5BF9;&#x4E8E;&#x5206;&#x652F;&#x8282;&#x70B9;&#x7684;&#x8BDD;&#xFF0C;&#x4FDD;&#x7559;&#x7684;&#x662F;&#x6700;&#x5C0F;&#x7684;key</span>
+    pgid       pgid   <span class="hljs-comment">// &#x5206;&#x652F;&#x8282;&#x70B9;&#x5173;&#x8054;&#x7684;&#x9875;id</span>
+    parent     *node  <span class="hljs-comment">// &#x8BE5;&#x8282;&#x70B9;&#x7684;parent</span>
+    children   nodes  <span class="hljs-comment">// &#x8BE5;&#x8282;&#x70B9;&#x7684;&#x5B69;&#x5B50;&#x8282;&#x70B9;</span>
+    inodes     inodes <span class="hljs-comment">// &#x8BE5;&#x8282;&#x70B9;&#x4E0A;&#x4FDD;&#x5B58;&#x7684;&#x7D22;&#x5F15;&#x6570;&#x636E;</span>
+}
+
+<span class="hljs-comment">// inode represents an internal node inside of a node.</span>
+<span class="hljs-comment">// It can be used to point to elements in a page or point</span>
+<span class="hljs-comment">// to an element which hasn&apos;t been added to a page yet.</span>
+<span class="hljs-keyword">type</span> inode <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// &#x8868;&#x793A;&#x662F;&#x5426;&#x662F;&#x5B50;&#x6876;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x8FD8;&#x662F;&#x666E;&#x901A;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x3002;&#x5982;&#x679C;flags&#x503C;&#x4E3A;1&#x8868;&#x793A;&#x5B50;&#x6876;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#xFF0C;&#x5426;&#x5219;&#x4E3A;&#x666E;&#x901A;&#x53F6;&#x5B50;&#x8282;&#x70B9;</span>
+    flags <span class="hljs-keyword">uint32</span>
+    <span class="hljs-comment">// &#x5F53;inode&#x4E3A;&#x5206;&#x652F;&#x5143;&#x7D20;&#x65F6;&#xFF0C;pgid&#x624D;&#x6709;&#x503C;&#xFF0C;&#x4E3A;&#x53F6;&#x5B50;&#x5143;&#x7D20;&#x65F6;&#xFF0C;&#x5219;&#x6CA1;&#x503C;</span>
+    pgid pgid
+    key  []<span class="hljs-keyword">byte</span>
+    <span class="hljs-comment">// &#x5F53;inode&#x4E3A;&#x5206;&#x652F;&#x5143;&#x7D20;&#x65F6;&#xFF0C;value&#x4E3A;&#x7A7A;&#xFF0C;&#x4E3A;&#x53F6;&#x5B50;&#x5143;&#x7D20;&#x65F6;&#xFF0C;&#x624D;&#x6709;&#x503C;</span>
+    value []<span class="hljs-keyword">byte</span>
+}
+
+<span class="hljs-keyword">type</span> inodes []inode
+</code></pre>
+<h4 id="332-node&#x8282;&#x70B9;&#x548C;page&#x8F6C;&#x6362;">3.3.2 node&#x8282;&#x70B9;&#x548C;page&#x8F6C;&#x6362;</h4>
+<p>&#x5728;node&#x5BF9;&#x8C61;&#x4E0A;&#x6709;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;read(page)&#x3001;write(page)&#xFF0C;&#x5176;&#x4E2D;read(page)&#x65B9;&#x6CD5;&#x662F;&#x7528;&#x6765;&#x901A;&#x8FC7;page&#x6784;&#x5EFA;&#x4E00;&#x4E2A;node&#x8282;&#x70B9;&#xFF1B;&#x800C;write(page)&#x65B9;&#x6CD5;&#x5219;&#x662F;&#x5C06;&#x5F53;&#x524D;&#x7684;node&#x8282;&#x70B9;&#x5199;&#x5165;&#x5230;page&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x524D;&#x9762;&#x4ED6;&#x63D0;&#x5230;&#x4E86;node&#x8282;&#x70B9;&#x548C;page&#x8282;&#x70B9;&#x7684;&#x76F8;&#x4E92;&#x8F6C;&#x6362;&#xFF0C;&#x6B64;&#x5904;&#x4E3A;&#x4E86;&#x4FDD;&#x8BC1;&#x5185;&#x5BB9;&#x5B8C;&#x6574;&#x6027;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x662F;&#x518D;&#x8865;&#x5145;&#x4E0B;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x7ED9;&#x5927;&#x5BB6;&#x52A0;&#x6DF1;&#x4E0B;&#x5F71;&#x54CD;&#xFF0C;&#x5C55;&#x793A;&#x4E0B;&#x540C;&#x6837;&#x7684;&#x6570;&#x636E;&#x5728;&#x78C1;&#x76D8;&#x4E0A;&#x5982;&#x4F55;&#x7EC4;&#x7EC7;&#x7684;&#xFF0C;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x53C8;&#x662F;&#x5982;&#x4F55;&#x7EC4;&#x7EC7;&#x7684;&#x3002;</p>
+<p><strong>node-&gt;page</strong></p>
+<pre><code class="lang-go"><span class="hljs-comment">// write writes the items onto one or more pages.</span>
+<span class="hljs-comment">// &#x5C06;node&#x8F6C;&#x4E3A;page</span>
+<span class="hljs-keyword">func</span> (n *node) write(p *page) {
+    <span class="hljs-comment">// Initialize page.</span>
+    <span class="hljs-comment">// &#x5224;&#x65AD;&#x662F;&#x5426;&#x662F;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x8FD8;&#x662F;&#x975E;&#x53F6;&#x5B50;&#x8282;&#x70B9;</span>
+    <span class="hljs-keyword">if</span> n.isLeaf {
+        p.flags |= leafPageFlag
+    } <span class="hljs-keyword">else</span> {
+        p.flags |= branchPageFlag
+    }
+
+    <span class="hljs-comment">// &#x8FD9;&#x513F;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x4E0D;&#x53EF;&#x80FD;&#x6EA2;&#x51FA;&#xFF0C;&#x56E0;&#x4E3A;&#x6EA2;&#x51FA;&#x65F6;&#xFF0C;&#x4F1A;&#x5206;&#x88C2;</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(n.inodes) &gt;= <span class="hljs-number">0xFFFF</span> {
+        <span class="hljs-built_in">panic</span>(fmt.Sprintf(<span class="hljs-string">&quot;inode overflow: %d (pgid=%d)&quot;</span>, <span class="hljs-built_in">len</span>(n.inodes), p.id))
+    }
+    p.count = <span class="hljs-keyword">uint16</span>(<span class="hljs-built_in">len</span>(n.inodes))
+
+    <span class="hljs-comment">// Stop here if there are no items to write.</span>
+    <span class="hljs-keyword">if</span> p.count == <span class="hljs-number">0</span> {
+        <span class="hljs-keyword">return</span>
+    }
+
+    <span class="hljs-comment">// Loop over each item and write it to the page.</span>
+    <span class="hljs-comment">// b&#x6307;&#x5411;&#x7684;&#x6307;&#x9488;&#x4E3A;&#x63D0;&#x9003;&#x8FC7;&#x6240;&#x6709;item&#x5934;&#x90E8;&#x7684;&#x4F4D;&#x7F6E;</span>
+    b := (*[maxAllocSize]<span class="hljs-keyword">byte</span>)(unsafe.Pointer(&amp;p.ptr))[n.pageElementSize()*<span class="hljs-built_in">len</span>(n.inodes):]
+    <span class="hljs-keyword">for</span> i, item := <span class="hljs-keyword">range</span> n.inodes {
+        _assert(<span class="hljs-built_in">len</span>(item.key) &gt; <span class="hljs-number">0</span>, <span class="hljs-string">&quot;write: zero-length inode key&quot;</span>)
+
+        <span class="hljs-comment">// Write the page element.</span>
+        <span class="hljs-comment">// &#x5199;&#x5165;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x6570;&#x636E;</span>
+        <span class="hljs-keyword">if</span> n.isLeaf {
+            elem := p.leafPageElement(<span class="hljs-keyword">uint16</span>(i))
+            elem.pos = <span class="hljs-keyword">uint32</span>(<span class="hljs-keyword">uintptr</span>(unsafe.Pointer(&amp;b[<span class="hljs-number">0</span>])) - <span class="hljs-keyword">uintptr</span>(unsafe.Pointer(elem)))
+            elem.flags = item.flags
+            elem.ksize = <span class="hljs-keyword">uint32</span>(<span class="hljs-built_in">len</span>(item.key))
+            elem.vsize = <span class="hljs-keyword">uint32</span>(<span class="hljs-built_in">len</span>(item.value))
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-comment">// &#x5199;&#x5165;&#x5206;&#x652F;&#x8282;&#x70B9;&#x6570;&#x636E;</span>
+            elem := p.branchPageElement(<span class="hljs-keyword">uint16</span>(i))
+            elem.pos = <span class="hljs-keyword">uint32</span>(<span class="hljs-keyword">uintptr</span>(unsafe.Pointer(&amp;b[<span class="hljs-number">0</span>])) - <span class="hljs-keyword">uintptr</span>(unsafe.Pointer(elem)))
+            elem.ksize = <span class="hljs-keyword">uint32</span>(<span class="hljs-built_in">len</span>(item.key))
+            elem.pgid = item.pgid
+            _assert(elem.pgid != p.id, <span class="hljs-string">&quot;write: circular dependency occurred&quot;</span>)
+        }
+
+        <span class="hljs-comment">// If the length of key+value is larger than the max allocation size</span>
+        <span class="hljs-comment">// then we need to reallocate the byte array pointer.</span>
+        <span class="hljs-comment">//</span>
+        <span class="hljs-comment">// See: https://github.com/boltdb/bolt/pull/335</span>
+        klen, vlen := <span class="hljs-built_in">len</span>(item.key), <span class="hljs-built_in">len</span>(item.value)
+        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(b) &lt; klen+vlen {
+            b = (*[maxAllocSize]<span class="hljs-keyword">byte</span>)(unsafe.Pointer(&amp;b[<span class="hljs-number">0</span>]))[:]
+        }
+
+        <span class="hljs-comment">// Write data for the element to the end of the page.</span>
+        <span class="hljs-built_in">copy</span>(b[<span class="hljs-number">0</span>:], item.key)
+        b = b[klen:]
+        <span class="hljs-built_in">copy</span>(b[<span class="hljs-number">0</span>:], item.value)
+        b = b[vlen:]
+    }
+
+    <span class="hljs-comment">// DEBUG ONLY: n.dump()</span>
+}
+</code></pre>
+<p><strong>page-&gt;node</strong></p>
+<pre><code class="lang-go"><span class="hljs-comment">// &#x6839;&#x636E;page&#x6765;&#x521D;&#x59CB;&#x5316;node</span>
+<span class="hljs-comment">// read initializes the node from a page.</span>
+<span class="hljs-keyword">func</span> (n *node) read(p *page) {
+    n.pgid = p.id
+    n.isLeaf = ((p.flags &amp; leafPageFlag) != <span class="hljs-number">0</span>)
+    <span class="hljs-comment">// &#x4E00;&#x4E2A;inodes&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;xxxPageElement&#x5BF9;&#x8C61;</span>
+    n.inodes = <span class="hljs-built_in">make</span>(inodes, <span class="hljs-keyword">int</span>(p.count))
+
+    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">int</span>(p.count); i++ {
+        inode := &amp;n.inodes[i]
+        <span class="hljs-keyword">if</span> n.isLeaf {
+            <span class="hljs-comment">// &#x83B7;&#x53D6;&#x7B2C;i&#x4E2A;&#x53F6;&#x5B50;&#x8282;&#x70B9;</span>
+            elem := p.leafPageElement(<span class="hljs-keyword">uint16</span>(i))
+            inode.flags = elem.flags
+            inode.key = elem.key()
+            inode.value = elem.value()
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-comment">// &#x6811;&#x679D;&#x8282;&#x70B9;</span>
+            elem := p.branchPageElement(<span class="hljs-keyword">uint16</span>(i))
+            inode.pgid = elem.pgid
+            inode.key = elem.key()
+        }
+        _assert(<span class="hljs-built_in">len</span>(inode.key) &gt; <span class="hljs-number">0</span>, <span class="hljs-string">&quot;read: zero-length inode key&quot;</span>)
+    }
+
+    <span class="hljs-comment">// Save first key so we can find the node in the parent when we spill.</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(n.inodes) &gt; <span class="hljs-number">0</span> {
+        <span class="hljs-comment">// &#x4FDD;&#x5B58;&#x7B2C;1&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x503C;</span>
+        n.key = n.inodes[<span class="hljs-number">0</span>].key
+        _assert(<span class="hljs-built_in">len</span>(n.key) &gt; <span class="hljs-number">0</span>, <span class="hljs-string">&quot;read: zero-length node key&quot;</span>)
+    } <span class="hljs-keyword">else</span> {
+        n.key = <span class="hljs-literal">nil</span>
+    }
+}
+</code></pre>
+<h4 id="333-node&#x8282;&#x70B9;&#x7684;&#x589E;&#x5220;&#x6539;&#x67E5;">3.3.3 node&#x8282;&#x70B9;&#x7684;&#x589E;&#x5220;&#x6539;&#x67E5;</h4>
+<p><strong>put(k,v)</strong></p>
+<pre><code class="lang-go"><span class="hljs-comment">// put inserts a key/value.</span>
+<span class="hljs-comment">// &#x5982;&#x679C;put&#x7684;&#x662F;&#x4E00;&#x4E2A;key&#x3001;value&#x7684;&#x8BDD;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x6307;&#x5B9A;pgid&#x3002;</span>
+<span class="hljs-comment">// &#x5982;&#x679C;put&#x7684;&#x4E00;&#x4E2A;&#x6811;&#x679D;&#x8282;&#x70B9;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x6307;&#x5B9A;pgid&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x6307;&#x5B9A;value</span>
+<span class="hljs-keyword">func</span> (n *node) put(oldKey, newKey, value []<span class="hljs-keyword">byte</span>, pgid pgid, flags <span class="hljs-keyword">uint32</span>) {
+    <span class="hljs-keyword">if</span> pgid &gt;= n.bucket.tx.meta.pgid {
+        <span class="hljs-built_in">panic</span>(fmt.Sprintf(<span class="hljs-string">&quot;pgid (%d) above high water mark (%d)&quot;</span>, pgid, n.bucket.tx.meta.pgid))
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(oldKey) &lt;= <span class="hljs-number">0</span> {
+        <span class="hljs-built_in">panic</span>(<span class="hljs-string">&quot;put: zero-length old key&quot;</span>)
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(newKey) &lt;= <span class="hljs-number">0</span> {
+        <span class="hljs-built_in">panic</span>(<span class="hljs-string">&quot;put: zero-length new key&quot;</span>)
+    }
+
+    <span class="hljs-comment">// Find insertion index.</span>
+    index := sort.Search(<span class="hljs-built_in">len</span>(n.inodes), <span class="hljs-keyword">func</span>(i <span class="hljs-keyword">int</span>) <span class="hljs-keyword">bool</span> { <span class="hljs-keyword">return</span> bytes.Compare(n.inodes[i].key, oldKey) != <span class="hljs-number">-1</span> })
+
+    <span class="hljs-comment">// Add capacity and shift nodes if we don&apos;t have an exact match and need to insert.</span>
+    exact := (<span class="hljs-built_in">len</span>(n.inodes) &gt; <span class="hljs-number">0</span> &amp;&amp; index &lt; <span class="hljs-built_in">len</span>(n.inodes) &amp;&amp; bytes.Equal(n.inodes[index].key, oldKey))
+    <span class="hljs-keyword">if</span> !exact {
+        n.inodes = <span class="hljs-built_in">append</span>(n.inodes, inode{})
+        <span class="hljs-built_in">copy</span>(n.inodes[index+<span class="hljs-number">1</span>:], n.inodes[index:])
+    }
+
+    inode := &amp;n.inodes[index]
+    inode.flags = flags
+    inode.key = newKey
+    inode.value = value
+    inode.pgid = pgid
+    _assert(<span class="hljs-built_in">len</span>(inode.key) &gt; <span class="hljs-number">0</span>, <span class="hljs-string">&quot;put: zero-length inode key&quot;</span>)
+}
+</code></pre>
+<p><strong>get(k)</strong></p>
+<p>&#x5728;node&#x4E2D;&#xFF0C;&#x6CA1;&#x6709;get(k)&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x672C;&#x8D28;&#x662F;&#x5728;Cursor&#x4E2D;&#x5C31;&#x8FD4;&#x56DE;&#x4E86;get&#x7684;&#x6570;&#x636E;&#x3002;&#x5927;&#x5BB6;&#x53EF;&#x4EE5;&#x770B;&#x770B;Cursor&#x4E2D;&#x7684;keyValue()&#x65B9;&#x6CD5;&#x3002;</p>
+<p><strong>del(k)</strong></p>
+<pre><code class="lang-go"><span class="hljs-comment">// del removes a key from the node.</span>
+<span class="hljs-keyword">func</span> (n *node) del(key []<span class="hljs-keyword">byte</span>) {
+    <span class="hljs-comment">// Find index of key.</span>
+    index := sort.Search(<span class="hljs-built_in">len</span>(n.inodes), <span class="hljs-keyword">func</span>(i <span class="hljs-keyword">int</span>) <span class="hljs-keyword">bool</span> { <span class="hljs-keyword">return</span> bytes.Compare(n.inodes[i].key, key) != <span class="hljs-number">-1</span> })
+
+    <span class="hljs-comment">// Exit if the key isn&apos;t found.</span>
+    <span class="hljs-keyword">if</span> index &gt;= <span class="hljs-built_in">len</span>(n.inodes) || !bytes.Equal(n.inodes[index].key, key) {
+        <span class="hljs-keyword">return</span>
+    }
+
+    <span class="hljs-comment">// Delete inode from the node.</span>
+    n.inodes = <span class="hljs-built_in">append</span>(n.inodes[:index], n.inodes[index+<span class="hljs-number">1</span>:]...)
+
+    <span class="hljs-comment">// Mark the node as needing rebalancing.</span>
+    n.unbalanced = <span class="hljs-literal">true</span>
+}
+</code></pre>
+<p><strong>nextSibling()&#x3001;prevSibling()</strong></p>
+<pre><code class="lang-go">
+<span class="hljs-comment">// nextSibling returns the next node with the same parent.</span>
+<span class="hljs-comment">// &#x8FD4;&#x56DE;&#x4E0B;&#x4E00;&#x4E2A;&#x5144;&#x5F1F;&#x8282;&#x70B9;</span>
+<span class="hljs-keyword">func</span> (n *node) nextSibling() *node {
+    <span class="hljs-keyword">if</span> n.parent == <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+    }
+    index := n.parent.childIndex(n)
+    <span class="hljs-keyword">if</span> index &gt;= n.parent.numChildren()<span class="hljs-number">-1</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+    }
+    <span class="hljs-keyword">return</span> n.parent.childAt(index + <span class="hljs-number">1</span>)
+}
+
+<span class="hljs-comment">// prevSibling returns the previous node with the same parent.</span>
+<span class="hljs-comment">// &#x8FD4;&#x56DE;&#x4E0A;&#x4E00;&#x4E2A;&#x5144;&#x5F1F;&#x8282;&#x70B9;</span>
+<span class="hljs-keyword">func</span> (n *node) prevSibling() *node {
+    <span class="hljs-keyword">if</span> n.parent == <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+    }
+    <span class="hljs-comment">// &#x9996;&#x5148;&#x627E;&#x4E0B;&#x6807;</span>
+    index := n.parent.childIndex(n)
+    <span class="hljs-keyword">if</span> index == <span class="hljs-number">0</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+    }
+    <span class="hljs-comment">// &#x7136;&#x540E;&#x8FD4;&#x56DE;</span>
+    <span class="hljs-keyword">return</span> n.parent.childAt(index - <span class="hljs-number">1</span>)
+}
+
+<span class="hljs-comment">// childIndex returns the index of a given child node.</span>
+<span class="hljs-keyword">func</span> (n *node) childIndex(child *node) <span class="hljs-keyword">int</span> {
+    index := sort.Search(<span class="hljs-built_in">len</span>(n.inodes), <span class="hljs-keyword">func</span>(i <span class="hljs-keyword">int</span>) <span class="hljs-keyword">bool</span> { <span class="hljs-keyword">return</span> bytes.Compare(n.inodes[i].key, child.key) != <span class="hljs-number">-1</span> })
+    <span class="hljs-keyword">return</span> index
+}
+
+
+<span class="hljs-comment">// childAt returns the child node at a given index.</span>
+<span class="hljs-comment">// &#x53EA;&#x6709;&#x6811;&#x679D;&#x8282;&#x70B9;&#x624D;&#x6709;&#x5B69;&#x5B50;</span>
+<span class="hljs-keyword">func</span> (n *node) childAt(index <span class="hljs-keyword">int</span>) *node {
+    <span class="hljs-keyword">if</span> n.isLeaf {
+        <span class="hljs-built_in">panic</span>(fmt.Sprintf(<span class="hljs-string">&quot;invalid childAt(%d) on a leaf node&quot;</span>, index))
+    }
+    <span class="hljs-keyword">return</span> n.bucket.node(n.inodes[index].pgid, n)
+}
+
+<span class="hljs-comment">// node creates a node from a page and associates it with a given parent.</span>
+<span class="hljs-comment">// &#x6839;&#x636E;pgid&#x521B;&#x5EFA;&#x4E00;&#x4E2A;node</span>
+<span class="hljs-keyword">func</span> (b *Bucket) node(pgid pgid, parent *node) *node {
+    _assert(b.nodes != <span class="hljs-literal">nil</span>, <span class="hljs-string">&quot;nodes map expected&quot;</span>)
+
+    <span class="hljs-comment">// Retrieve node if it&apos;s already been created.</span>
+    <span class="hljs-keyword">if</span> n := b.nodes[pgid]; n != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> n
+    }
+
+    <span class="hljs-comment">// Otherwise create a node and cache it.</span>
+    n := &amp;node{bucket: b, parent: parent}
+    <span class="hljs-keyword">if</span> parent == <span class="hljs-literal">nil</span> {
+        b.rootNode = n
+    } <span class="hljs-keyword">else</span> {
+        parent.children = <span class="hljs-built_in">append</span>(parent.children, n)
+    }
+
+    <span class="hljs-comment">// Use the inline page if this is an inline bucket.</span>
+    <span class="hljs-comment">// &#x5982;&#x679C;&#x7B2C;&#x4E8C;&#x6B21;&#x8FDB;&#x6765;&#xFF0C;b.page&#x4E0D;&#x4E3A;&#x7A7A;</span>
+    <span class="hljs-comment">// &#x6B64;&#x5904;&#x7684;pgid&#x548C;b.page&#x53EA;&#x4F1A;&#x6709;&#x4E00;&#x4E2A;&#x662F;&#x6709;&#x503C;&#x7684;&#x3002;</span>
+    <span class="hljs-keyword">var</span> p = b.page
+    <span class="hljs-comment">// &#x8BF4;&#x660E;&#x4E0D;&#x662F;&#x5185;&#x8054;&#x6876;</span>
+    <span class="hljs-keyword">if</span> p == <span class="hljs-literal">nil</span> {
+        p = b.tx.page(pgid)
+    }
+
+    <span class="hljs-comment">// Read the page into the node and cache it.</span>
+    n.read(p)
+    <span class="hljs-comment">// &#x7F13;&#x5B58;</span>
+    b.nodes[pgid] = n
+
+    <span class="hljs-comment">// Update statistics.</span>
+    b.tx.stats.NodeCount++
+
+    <span class="hljs-keyword">return</span> n
+}
+</code></pre>
+<h4 id="334-node&#x8282;&#x70B9;&#x7684;&#x5206;&#x88C2;&#x548C;&#x5408;&#x5E76;">3.3.4 node&#x8282;&#x70B9;&#x7684;&#x5206;&#x88C2;&#x548C;&#x5408;&#x5E76;</h4>
+<p>&#x4E0A;&#x9762;&#x6211;&#x4EEC;&#x770B;&#x4E86;&#x5BF9;node&#x8282;&#x70B9;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x5305;&#x62EC;put&#x548C;del&#x65B9;&#x6CD5;&#x3002;&#x7ECF;&#x8FC7;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#x540E;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4;&#x5F53;&#x524D;&#x7684;page&#x586B;&#x5145;&#x5EA6;&#x8FC7;&#x9AD8;&#x6216;&#x8005;&#x8FC7;&#x4F4E;&#x3002;&#x56E0;&#x6B64;&#x5C31;&#x5F15;&#x51FA;&#x4E86;node&#x8282;&#x70B9;&#x7684;&#x5206;&#x88C2;&#x548C;&#x5408;&#x5E76;&#x3002;&#x4E0B;&#x9762;&#x7B80;&#x5355;&#x4ECB;&#x7ECD;&#x4E0B;&#x4EC0;&#x4E48;&#x662F;&#x5206;&#x88C2;&#x548C;&#x5408;&#x5E76;&#x3002;</p>
+<p><strong>&#x5206;&#x88C2;:</strong> &#x5F53;&#x4E00;&#x4E2A;node&#x4E2D;&#x7684;&#x6570;&#x636E;&#x8FC7;&#x591A;&#x65F6;&#xFF0C;&#x6700;&#x7B80;&#x5355;&#x5C31;&#x662F;&#x5F53;&#x8D85;&#x8FC7;&#x4E86;page&#x7684;&#x586B;&#x5145;&#x5EA6;&#x65F6;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x5C06;&#x5F53;&#x524D;&#x7684;node&#x62C6;&#x5206;&#x6210;&#x4E24;&#x4E2A;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5E95;&#x5C42;&#x4F1A;&#x5C06;&#x4E00;&#x9875;&#x6570;&#x636E;&#x62C6;&#x5206;&#x5B58;&#x653E;&#x5230;&#x4E24;&#x9875;&#x4E2D;&#x3002;</p>
+<p><strong>&#x5408;&#x5E76;:</strong> &#x5F53;&#x5220;&#x9664;&#x4E86;&#x4E00;&#x4E2A;&#x6216;&#x8005;&#x4E00;&#x6279;&#x5BF9;&#x8C61;&#x65F6;&#xFF0C;&#x6B64;&#x65F6;&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4;&#x4E00;&#x9875;&#x6570;&#x636E;&#x7684;&#x586B;&#x5145;&#x5EA6;&#x8FC7;&#x4F4E;&#xFF0C;&#x6B64;&#x65F6;&#x7A7A;&#x95F4;&#x53EF;&#x80FD;&#x4F1A;&#x6D6A;&#x8D39;&#x6BD4;&#x8F83;&#x591A;&#x3002;&#x6240;&#x4EE5;&#x5C31;&#x9700;&#x8981;&#x8003;&#x8651;&#x5BF9;&#x9875;&#x4E4B;&#x95F4;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x5408;&#x5E76;&#x3002;</p>
+<p>&#x6709;&#x4E86;&#x5927;&#x6982;&#x7684;&#x4E86;&#x89E3;&#xFF0C;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x5C31;&#x770B;&#x4E00;&#x4E0B;&#x5BF9;&#x4E00;&#x4E2A;node&#x5206;&#x88C2;&#x548C;&#x5408;&#x5E76;&#x7684;&#x5B9E;&#x73B0;&#x8FC7;&#x7A0B;&#x3002;</p>
+<p><strong>&#x5206;&#x88C2;spill()</strong></p>
+<blockquote>
+<p>spill writes the nodes to dirty pages and splits nodes as it goes. Returns an error if dirty pages cannot be allocated.</p>
+</blockquote>
+<pre><code class="lang-go"><span class="hljs-comment">// spill writes the nodes to dirty pages and splits nodes as it goes.</span>
+<span class="hljs-comment">// Returns an error if dirty pages cannot be allocated.</span>
+<span class="hljs-keyword">func</span> (n *node) spill() error {
+    <span class="hljs-keyword">var</span> tx = n.bucket.tx
+    <span class="hljs-keyword">if</span> n.spilled {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+    }
+
+    <span class="hljs-comment">// Spill child nodes first. Child nodes can materialize sibling nodes in</span>
+    <span class="hljs-comment">// the case of split-merge so we cannot use a range loop. We have to check</span>
+    <span class="hljs-comment">// the children size on every loop iteration.</span>
+    sort.Sort(n.children)
+    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(n.children); i++ {
+        <span class="hljs-keyword">if</span> err := n.children[i].spill(); err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> err
+        }
+    }
+
+    <span class="hljs-comment">// We no longer need the child list because it&apos;s only used for spill tracking.</span>
+    n.children = <span class="hljs-literal">nil</span>
+
+    <span class="hljs-comment">// Split nodes into appropriate sizes. The first node will always be n.</span>
+    <span class="hljs-comment">// &#x5C06;&#x5F53;&#x524D;&#x7684;node&#x8FDB;&#x884C;&#x62C6;&#x5206;&#x6210;&#x591A;&#x4E2A;node</span>
+    <span class="hljs-keyword">var</span> nodes = n.split(tx.db.pageSize)
+    <span class="hljs-keyword">for</span> _, node := <span class="hljs-keyword">range</span> nodes {
+        <span class="hljs-comment">// Add node&apos;s page to the freelist if it&apos;s not new.</span>
+        <span class="hljs-keyword">if</span> node.pgid &gt; <span class="hljs-number">0</span> {
+            tx.db.freelist.free(tx.meta.txid, tx.page(node.pgid))
+            node.pgid = <span class="hljs-number">0</span>
+        }
+
+        <span class="hljs-comment">// Allocate contiguous space for the node.</span>
+        p, err := tx.allocate((node.size() / tx.db.pageSize) + <span class="hljs-number">1</span>)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> err
+        }
+
+        <span class="hljs-comment">// Write the node.</span>
+        <span class="hljs-keyword">if</span> p.id &gt;= tx.meta.pgid {
+            <span class="hljs-comment">// &#x4E0D;&#x53EF;&#x80FD;&#x53D1;&#x751F;</span>
+            <span class="hljs-built_in">panic</span>(fmt.Sprintf(<span class="hljs-string">&quot;pgid (%d) above high water mark (%d)&quot;</span>, p.id, tx.meta.pgid))
+        }
+        node.pgid = p.id
+        node.write(p)
+        <span class="hljs-comment">// &#x5DF2;&#x7ECF;&#x62C6;&#x5206;&#x8FC7;&#x4E86;</span>
+        node.spilled = <span class="hljs-literal">true</span>
+
+        <span class="hljs-comment">// Insert into parent inodes.</span>
+        <span class="hljs-keyword">if</span> node.parent != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">var</span> key = node.key
+            <span class="hljs-keyword">if</span> key == <span class="hljs-literal">nil</span> {
+                key = node.inodes[<span class="hljs-number">0</span>].key
+            }
+
+            <span class="hljs-comment">// &#x653E;&#x5165;&#x7236;&#x4EB2;&#x8282;&#x70B9;&#x4E2D;</span>
+            node.parent.put(key, node.inodes[<span class="hljs-number">0</span>].key, <span class="hljs-literal">nil</span>, node.pgid, <span class="hljs-number">0</span>)
+            node.key = node.inodes[<span class="hljs-number">0</span>].key
+            _assert(<span class="hljs-built_in">len</span>(node.key) &gt; <span class="hljs-number">0</span>, <span class="hljs-string">&quot;spill: zero-length node key&quot;</span>)
+        }
+
+        <span class="hljs-comment">// Update the statistics.</span>
+        tx.stats.Spill++
+    }
+
+    <span class="hljs-comment">// If the root node split and created a new root then we need to spill that</span>
+    <span class="hljs-comment">// as well. We&apos;ll clear out the children to make sure it doesn&apos;t try to respill.</span>
+    <span class="hljs-keyword">if</span> n.parent != <span class="hljs-literal">nil</span> &amp;&amp; n.parent.pgid == <span class="hljs-number">0</span> {
+        n.children = <span class="hljs-literal">nil</span>
+        <span class="hljs-keyword">return</span> n.parent.spill()
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+}
+
+<span class="hljs-comment">// split breaks up a node into multiple smaller nodes, if appropriate.</span>
+<span class="hljs-comment">// This should only be called from the spill() function.</span>
+<span class="hljs-keyword">func</span> (n *node) split(pageSize <span class="hljs-keyword">int</span>) []*node {
+    <span class="hljs-keyword">var</span> nodes []*node
+
+    node := n
+    <span class="hljs-keyword">for</span> {
+        <span class="hljs-comment">// Split node into two.</span>
+        a, b := node.splitTwo(pageSize)
+        nodes = <span class="hljs-built_in">append</span>(nodes, a)
+
+        <span class="hljs-comment">// If we can&apos;t split then exit the loop.</span>
+        <span class="hljs-keyword">if</span> b == <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">break</span>
+        }
+
+        <span class="hljs-comment">// Set node to b so it gets split on the next iteration.</span>
+        node = b
+    }
+
+    <span class="hljs-keyword">return</span> nodes
+}
+
+<span class="hljs-comment">// splitTwo breaks up a node into two smaller nodes, if appropriate.</span>
+<span class="hljs-comment">// This should only be called from the split() function.</span>
+<span class="hljs-keyword">func</span> (n *node) splitTwo(pageSize <span class="hljs-keyword">int</span>) (*node, *node) {
+    <span class="hljs-comment">// Ignore the split if the page doesn&apos;t have at least enough nodes for</span>
+    <span class="hljs-comment">// two pages or if the nodes can fit in a single page.</span>
+    <span class="hljs-comment">// &#x592A;&#x5C0F;&#x7684;&#x8BDD;&#xFF0C;&#x5C31;&#x4E0D;&#x62C6;&#x5206;&#x4E86;</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(n.inodes) &lt;= (minKeysPerPage*<span class="hljs-number">2</span>) || n.sizeLessThan(pageSize) {
+        <span class="hljs-keyword">return</span> n, <span class="hljs-literal">nil</span>
+    }
+
+    <span class="hljs-comment">// Determine the threshold before starting a new node.</span>
+    <span class="hljs-keyword">var</span> fillPercent = n.bucket.FillPercent
+    <span class="hljs-keyword">if</span> fillPercent &lt; minFillPercent {
+        fillPercent = minFillPercent
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> fillPercent &gt; maxFillPercent {
+        fillPercent = maxFillPercent
+    }
+    threshold := <span class="hljs-keyword">int</span>(<span class="hljs-keyword">float64</span>(pageSize) * fillPercent)
+
+    <span class="hljs-comment">// Determine split position and sizes of the two pages.</span>
+    splitIndex, _ := n.splitIndex(threshold)
+
+    <span class="hljs-comment">// Split node into two separate nodes.</span>
+    <span class="hljs-comment">// If there&apos;s no parent then we&apos;ll need to create one.</span>
+    <span class="hljs-keyword">if</span> n.parent == <span class="hljs-literal">nil</span> {
+        n.parent = &amp;node{bucket: n.bucket, children: []*node{n}}
+    }
+
+    <span class="hljs-comment">// Create a new node and add it to the parent.</span>
+    <span class="hljs-comment">// &#x62C6;&#x5206;&#x51FA;&#x4E00;&#x4E2A;&#x65B0;&#x8282;&#x70B9;</span>
+    next := &amp;node{bucket: n.bucket, isLeaf: n.isLeaf, parent: n.parent}
+    n.parent.children = <span class="hljs-built_in">append</span>(n.parent.children, next)
+
+    <span class="hljs-comment">// Split inodes across two nodes.</span>
+    next.inodes = n.inodes[splitIndex:]
+    n.inodes = n.inodes[:splitIndex]
+
+    <span class="hljs-comment">// Update the statistics.</span>
+    n.bucket.tx.stats.Split++
+
+    <span class="hljs-keyword">return</span> n, next
+}
+
+<span class="hljs-comment">// splitIndex finds the position where a page will fill a given threshold.</span>
+<span class="hljs-comment">// It returns the index as well as the size of the first page.</span>
+<span class="hljs-comment">// This is only be called from split().</span>
+<span class="hljs-comment">// &#x627E;&#x5230;&#x5408;&#x9002;&#x7684;index</span>
+<span class="hljs-keyword">func</span> (n *node) splitIndex(threshold <span class="hljs-keyword">int</span>) (index, sz <span class="hljs-keyword">int</span>) {
+    sz = pageHeaderSize
+
+    <span class="hljs-comment">// Loop until we only have the minimum number of keys required for the second page.</span>
+    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(n.inodes)-minKeysPerPage; i++ {
+        index = i
+        inode := n.inodes[i]
+        elsize := n.pageElementSize() + <span class="hljs-built_in">len</span>(inode.key) + <span class="hljs-built_in">len</span>(inode.value)
+
+        <span class="hljs-comment">// If we have at least the minimum number of keys and adding another</span>
+        <span class="hljs-comment">// node would put us over the threshold then exit and return.</span>
+        <span class="hljs-keyword">if</span> i &gt;= minKeysPerPage &amp;&amp; sz+elsize &gt; threshold {
+            <span class="hljs-keyword">break</span>
+        }
+
+        <span class="hljs-comment">// Add the element size to the total size.</span>
+        sz += elsize
+    }
+
+    <span class="hljs-keyword">return</span>
+}
+</code></pre>
+<p><strong>&#x5408;&#x5E76;rebalance()</strong></p>
+<blockquote>
+<p>rebalance attempts to combine the node with sibling nodes if the node fill size is below a threshold or if there are not enough keys.</p>
+</blockquote>
+<p><strong>&#x9875;&#x5408;&#x5E76;&#x6709;&#x70B9;&#x590D;&#x6742;&#xFF0C;&#x867D;&#x7136;&#x80FD;&#x770B;&#x61C2;&#xFF0C;&#x4F46;&#x8981;&#x81EA;&#x5DF1;&#x5199;&#x611F;&#x89C9;&#x8FD8;&#x662F;&#x633A;&#x96BE;&#x5199;&#x51FA;bug free&#x7684;</strong></p>
+<pre><code class="lang-go"><span class="hljs-comment">// rebalance attempts to combine the node with sibling nodes if the node fill</span>
+<span class="hljs-comment">// size is below a threshold or if there are not enough keys.</span>
+<span class="hljs-comment">// &#x586B;&#x5145;&#x7387;&#x592A;&#x4F4E;&#x6216;&#x8005;&#x6CA1;&#x6709;&#x8DB3;&#x591F;&#x7684;key&#x65F6;&#xFF0C;&#x8FDB;&#x884C;&#x9875;&#x5408;&#x5E76;</span>
+<span class="hljs-keyword">func</span> (n *node) rebalance() {
+    <span class="hljs-keyword">if</span> !n.unbalanced {
+        <span class="hljs-keyword">return</span>
+    }
+    n.unbalanced = <span class="hljs-literal">false</span>
+
+    <span class="hljs-comment">// Update statistics.</span>
+    n.bucket.tx.stats.Rebalance++
+
+    <span class="hljs-comment">// Ignore if node is above threshold (25%) and has enough keys.</span>
+    <span class="hljs-keyword">var</span> threshold = n.bucket.tx.db.pageSize / <span class="hljs-number">4</span>
+    <span class="hljs-keyword">if</span> n.size() &gt; threshold &amp;&amp; <span class="hljs-built_in">len</span>(n.inodes) &gt; n.minKeys() {
+        <span class="hljs-keyword">return</span>
+    }
+
+    <span class="hljs-comment">// Root node has special handling.</span>
+    <span class="hljs-keyword">if</span> n.parent == <span class="hljs-literal">nil</span> {
+        <span class="hljs-comment">// If root node is a branch and only has one node then collapse it.</span>
+        <span class="hljs-keyword">if</span> !n.isLeaf &amp;&amp; <span class="hljs-built_in">len</span>(n.inodes) == <span class="hljs-number">1</span> {
+            <span class="hljs-comment">// Move root&apos;s child up.</span>
+            child := n.bucket.node(n.inodes[<span class="hljs-number">0</span>].pgid, n)
+            n.isLeaf = child.isLeaf
+            n.inodes = child.inodes[:]
+            n.children = child.children
+
+            <span class="hljs-comment">// Reparent all child nodes being moved.</span>
+            <span class="hljs-keyword">for</span> _, inode := <span class="hljs-keyword">range</span> n.inodes {
+                <span class="hljs-keyword">if</span> child, ok := n.bucket.nodes[inode.pgid]; ok {
+                    child.parent = n
+                }
+            }
+
+            <span class="hljs-comment">// Remove old child.</span>
+            child.parent = <span class="hljs-literal">nil</span>
+            <span class="hljs-built_in">delete</span>(n.bucket.nodes, child.pgid)
+            child.free()
+        }
+
+        <span class="hljs-keyword">return</span>
+    }
+
+    <span class="hljs-comment">// If node has no keys then just remove it.</span>
+    <span class="hljs-keyword">if</span> n.numChildren() == <span class="hljs-number">0</span> {
+        n.parent.del(n.key)
+        n.parent.removeChild(n)
+        <span class="hljs-built_in">delete</span>(n.bucket.nodes, n.pgid)
+        n.free()
+        n.parent.rebalance()
+        <span class="hljs-keyword">return</span>
+    }
+
+    _assert(n.parent.numChildren() &gt; <span class="hljs-number">1</span>, <span class="hljs-string">&quot;parent must have at least 2 children&quot;</span>)
+
+    <span class="hljs-comment">// Destination node is right sibling if idx == 0, otherwise left sibling.</span>
+    <span class="hljs-keyword">var</span> target *node
+    <span class="hljs-comment">// &#x5224;&#x65AD;&#x5F53;&#x524D;node&#x662F;&#x5426;&#x662F;parent&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x5B69;&#x5B50;&#x8282;&#x70B9;&#xFF0C;&#x662F;&#x7684;&#x8BDD;&#xFF0C;&#x5C31;&#x8981;&#x627E;&#x5B83;&#x7684;&#x4E0B;&#x4E00;&#x4E2A;&#x5144;&#x5F1F;&#x8282;&#x70B9;&#xFF0C;&#x5426;&#x5219;&#x7684;&#x8BDD;&#xFF0C;&#x5C31;&#x627E;&#x4E0A;&#x4E00;&#x4E2A;&#x5144;&#x5F1F;&#x8282;&#x70B9;</span>
+    <span class="hljs-keyword">var</span> useNextSibling = (n.parent.childIndex(n) == <span class="hljs-number">0</span>)
+    <span class="hljs-keyword">if</span> useNextSibling {
+        target = n.nextSibling()
+    } <span class="hljs-keyword">else</span> {
+        target = n.prevSibling()
+    }
+
+    <span class="hljs-comment">// If both this node and the target node are too small then merge them.</span>
+    <span class="hljs-comment">// &#x5408;&#x5E76;&#x5F53;&#x524D;node&#x548C;target&#xFF0C;target&#x5408;&#x5230;node</span>
+    <span class="hljs-keyword">if</span> useNextSibling {
+        <span class="hljs-comment">// Reparent all child nodes being moved.</span>
+        <span class="hljs-keyword">for</span> _, inode := <span class="hljs-keyword">range</span> target.inodes {
+            <span class="hljs-keyword">if</span> child, ok := n.bucket.nodes[inode.pgid]; ok {
+                <span class="hljs-comment">// &#x4E4B;&#x524D;&#x7684;&#x7236;&#x4EB2;&#x79FB;&#x9664;&#x8BE5;&#x5B69;&#x5B50;</span>
+                child.parent.removeChild(child)
+                <span class="hljs-comment">// &#x91CD;&#x65B0;&#x6307;&#x5B9A;&#x7236;&#x4EB2;&#x8282;&#x70B9;</span>
+                child.parent = n
+                <span class="hljs-comment">// &#x7236;&#x4EB2;&#x8282;&#x70B9;&#x6307;&#x5F53;&#x524D;&#x5B69;&#x5B50;</span>
+                child.parent.children = <span class="hljs-built_in">append</span>(child.parent.children, child)
+            }
+        }
+
+        <span class="hljs-comment">// Copy over inodes from target and remove target.</span>
+        n.inodes = <span class="hljs-built_in">append</span>(n.inodes, target.inodes...)
+        n.parent.del(target.key)
+        n.parent.removeChild(target)
+        <span class="hljs-built_in">delete</span>(n.bucket.nodes, target.pgid)
+        target.free()
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-comment">// node&#x5408;&#x5230;target</span>
+        <span class="hljs-comment">// Reparent all child nodes being moved.</span>
+        <span class="hljs-keyword">for</span> _, inode := <span class="hljs-keyword">range</span> n.inodes {
+            <span class="hljs-keyword">if</span> child, ok := n.bucket.nodes[inode.pgid]; ok {
+                child.parent.removeChild(child)
+                child.parent = target
+                child.parent.children = <span class="hljs-built_in">append</span>(child.parent.children, child)
+            }
+        }
+
+        <span class="hljs-comment">// Copy over inodes to target and remove node.</span>
+        target.inodes = <span class="hljs-built_in">append</span>(target.inodes, n.inodes...)
+        n.parent.del(n.key)
+        n.parent.removeChild(n)
+        <span class="hljs-built_in">delete</span>(n.bucket.nodes, n.pgid)
+        n.free()
+    }
+
+    <span class="hljs-comment">// Either this node or the target node was deleted from the parent so rebalance it.</span>
+    n.parent.rebalance()
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Bucket遍历之Cursor.html" class="navigation navigation-prev " aria-label="Previous page: 第二节 Bucket遍历之Cursor">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Bucket的相关操作.html" class="navigation navigation-next " aria-label="Next page: 第四节 Bucket的相关操作">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"第三节 node节点的相关操作","level":"1.4.3","depth":2,"next":{"title":"第四节 Bucket的相关操作","level":"1.4.4","depth":2,"path":"chapter3/Bucket的相关操作.md","ref":"chapter3/Bucket的相关操作.md","articles":[]},"previous":{"title":"第二节 Bucket遍历之Cursor","level":"1.4.2","depth":2,"path":"chapter3/Bucket遍历之Cursor.md","ref":"chapter3/Bucket遍历之Cursor.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter3/node节点的相关操作.md","mtime":"2021-04-15T02:57:14.203Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-15T05:42:34.611Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
